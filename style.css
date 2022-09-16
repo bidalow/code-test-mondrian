@@ -1,0 +1,125 @@
+body {
+    background:#CCC;
+    font-family:Arial, Helvetica, sans-serif
+}
+h1{
+    width:100%;
+    margin-bottom:20px;
+    text-align:center;
+    font-size:48px;
+    font-weight:bold;;
+    background-color: #565656;
+    color: transparent;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+}
+#painting{
+    /*Keep it centered*/
+    margin:auto;
+
+    /*The reason for this gradient is because on top of the painting the borders are grey but on the bottom they are black*/
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(144,139,136,1) 127%);
+
+    /*I decided to use grid instead of position absolute elements to use a more modern approach*/
+    /*Also to avoid giving each div a top left width and height position*/
+    display:grid;
+    grid-gap:2px;
+
+    /*To give it an effect of being on a wall*/
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+#painting div{
+    /*Give it a little of a gradiend to make it appear more "real"*/
+    opacity:1;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+#painting:hover{
+    /*Only when you hover you can see the real painting in order to compare*/
+    background-image:url('https://media.tate.org.uk/art/images/work/T/T00/T00915_10.jpg');
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+#painting:hover div{
+    /*When viewing the real painting, all the squares dissapear*/
+    opacity:0;
+}
+.grey{
+    background-color:#B7B1B1;
+}
+.darkGrey{
+    background-color: #999798;
+}
+.black{
+    background-color:#444;
+}
+.blue{
+    background-color:#425262;
+}
+.yellow{
+    background-color:#DCBC4D;
+}
+.red{
+    background-color:#B55F44;
+}
+/*The grid goes to only one column and the colors are group together*/
+@media only screen and (max-width: 600px){
+    #painting{
+        width:98%;
+        height:603px;
+        grid:
+        'cell-1' 
+        'cell-2' 
+        'cell-3' 
+        'cell-4'
+        'cell-20'
+        'cell-7'
+        'cell-15'
+        'cell-16'
+        'cell-17'
+        'cell-23'
+        'cell-27'
+        'cell-5'
+        'cell-9'
+        'cell-11'
+        'cell-22'
+        'cell-28'
+        'cell-6'
+        'cell-10'
+        'cell-13'
+        'cell-24'
+        'cell-8'
+        'cell-14'
+        'cell-19'
+        'cell-25'
+        'cell-12'
+        'cell-18'
+        'cell-21'
+        'cell-26';
+        grid-template-rows: auto;
+        grid-template-columns: 100%;
+    }
+}
+
+/*After the screen goes to 600px or more, it resembles the painting*/
+@media only screen and (min-width: 600px) {
+    #painting{
+        /*According to the measurements of 99.7 × 100.3 cm*/
+        max-width:600px;
+        height:603px;
+        grid:
+        'cell-1 cell-2 cell-2 cell-2 cell-3 cell-3'
+        'cell-4 cell-5 cell-6 cell-6 cell-3 cell-3'
+        'cell-4 cell-7 cell-7 cell-8 cell-9 cell-10'
+        'cell-4 cell-11 cell-12 cell-13 cell-14 cell-15'
+        'cell-16 cell-17 cell-18 cell-13 cell-14 cell-15'
+        'cell-16 cell-17 cell-19 cell-20 cell-21 cell-15'
+        'cell-16 cell-17 cell-22 cell-23 cell-24 cell-25'
+        'cell-26 cell-26 cell-27 cell-27 cell-28 cell-25';
+        grid-template-rows: 8px 68px 88px 123px 81px 85px 100px 36px;
+        grid-template-columns: 84px 66px 163px 115px 128px 34px;
+    }
+    
+}
